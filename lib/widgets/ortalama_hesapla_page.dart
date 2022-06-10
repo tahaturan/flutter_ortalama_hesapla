@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ortalama_hesapla/constants/app_constant.dart';
+import 'package:flutter_ortalama_hesapla/helper/data_helper.dart';
 import 'package:flutter_ortalama_hesapla/widgets/ortalama_goster.dart';
 
 class OrtalamaHesaplaPage extends StatefulWidget {
@@ -11,6 +12,7 @@ class OrtalamaHesaplaPage extends StatefulWidget {
 
 class _OrtalamaHesaplaPageState extends State<OrtalamaHesaplaPage> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  double harfDropDownsecilenDeger = 4;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,10 +62,7 @@ class _OrtalamaHesaplaPageState extends State<OrtalamaHesaplaPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.account_circle_rounded),
-              ),
+              _buildHarfler(),
               IconButton(
                 onPressed: () {},
                 icon: Icon(Icons.account_circle_rounded),
@@ -87,7 +86,29 @@ class _OrtalamaHesaplaPageState extends State<OrtalamaHesaplaPage> {
           borderRadius: Constants.borderRadius,
         ),
         filled: true,
-        fillColor: Constants.anaRenk.shade100.withOpacity(0.3),
+        fillColor: Constants.anaRenk.shade100.withOpacity(0.5),
+      ),
+    );
+  }
+
+  _buildHarfler() {
+    return Container(
+      padding: Constants.dropDownPadding,
+      decoration: BoxDecoration(
+        color: Constants.anaRenk.shade200.withOpacity(0.3),
+        borderRadius: Constants.borderRadius,
+      ),
+      child: DropdownButton<double>(
+        elevation: 20,
+        iconEnabledColor: Constants.anaRenk.shade300,
+        value: harfDropDownsecilenDeger,
+        onChanged: (deger) {
+          setState(() {
+            harfDropDownsecilenDeger = deger!;
+          });
+        },
+        items: DataHelper.tumDerslerinHarfleri(),
+        underline: Container(),
       ),
     );
   }

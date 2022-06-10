@@ -21,4 +21,9 @@ class Constants {
     fontWeight: FontWeight.w800,
     color: anaRenk,
   );
+
+  static const EdgeInsets dropDownPadding = EdgeInsets.symmetric(
+    vertical: 8.0,
+    horizontal: 16,
+  );
 }
