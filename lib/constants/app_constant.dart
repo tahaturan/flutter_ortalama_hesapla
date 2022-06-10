@@ -10,4 +10,5 @@ class Constants {
     fontWeight: FontWeight.w900,
     color: anaRenk,
   );
+  static BorderRadius borderRadius = BorderRadius.circular(24);
 }
