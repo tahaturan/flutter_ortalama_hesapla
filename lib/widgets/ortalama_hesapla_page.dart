@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ortalama_hesapla/constants/app_constant.dart';
+import 'package:flutter_ortalama_hesapla/widgets/ortalama_goster.dart';
 
 class OrtalamaHesaplaPage extends StatefulWidget {
   const OrtalamaHesaplaPage({Key? key}) : super(key: key);
@@ -31,17 +32,11 @@ class _OrtalamaHesaplaPageState extends State<OrtalamaHesaplaPage> {
               children: [
                 Expanded(
                   flex: 2,
-                  child: Container(
-                    color: Colors.red,
-                    child: buildForm(),
-                  ),
+                  child: buildForm(),
                 ),
-                Expanded(
+                const Expanded(
                   flex: 1,
-                  child: Container(
-                    color: Colors.yellow,
-                    child: const Text("Ortalama"),
-                  ),
+                  child: OrtalamaGoster(dersSayisi: 1, ortalama: 4.5),
                 ),
               ],
             ),

@@ -11,4 +11,14 @@ class Constants {
     color: anaRenk,
   );
   static BorderRadius borderRadius = BorderRadius.circular(24);
+  static final TextStyle ortalamaTextStyle = GoogleFonts.quicksand(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    color: anaRenk,
+  );
+  static final TextStyle ortalamaStyle = GoogleFonts.quicksand(
+    fontSize: 55,
+    fontWeight: FontWeight.w800,
+    color: anaRenk,
+  );
 }
