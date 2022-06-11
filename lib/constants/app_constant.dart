@@ -10,7 +10,7 @@ class Constants {
     fontWeight: FontWeight.w900,
     color: anaRenk,
   );
-  static BorderRadius borderRadius = BorderRadius.circular(24);
+  static BorderRadius borderRadius = BorderRadius.circular(18);
   static final TextStyle ortalamaTextStyle = GoogleFonts.quicksand(
     fontSize: 16,
     fontWeight: FontWeight.w500,
@@ -26,4 +26,6 @@ class Constants {
     vertical: 8.0,
     horizontal: 16,
   );
+
+  static const EdgeInsets yatayPadding8 = EdgeInsets.symmetric(horizontal: 8);
 }

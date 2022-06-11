@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         //*visualDensity diger platformlarda da o ortama uygun sekilde gorunmesini istedik
       ),
-      home: OrtalamaHesaplaPage(),
+      home: const OrtalamaHesaplaPage(),
     );
   }
 }

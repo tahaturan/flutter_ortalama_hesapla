@@ -45,4 +45,20 @@ class DataHelper {
     //*child kisminida kullanicinin gorecegi kisma yani orayada gelen harflerimizi yazdik
     //*en sonda bunu DropdownButton kimimizin items bolumunde kullandik cunku oda bizden icinde DropdownMenuItem olan bir liste bekliyordu
   }
+
+//*Krediler dropDown icin listemizi ve elemanlarimizi olsuturduk
+  static List<int> _tumKrediler() {
+    return List.generate(10, (index) => index + 1).toList();
+  }
+
+  static List<DropdownMenuItem<double>> tumDerslerinKredileri() {
+    return _tumKrediler()
+        .map(
+          (gelenKredi) => DropdownMenuItem(
+            value: gelenKredi.toDouble(),
+            child: Text("$gelenKredi"),
+          ),
+        )
+        .toList();
+  }
 }

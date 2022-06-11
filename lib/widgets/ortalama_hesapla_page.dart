@@ -13,44 +13,46 @@ class OrtalamaHesaplaPage extends StatefulWidget {
 class _OrtalamaHesaplaPageState extends State<OrtalamaHesaplaPage> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   double harfDropDownsecilenDeger = 4;
+  double krediDropDownSecilenDeger = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          title: Center(
-            child: Text(
-              Constants.baslikText,
-              style: Constants.baslikStyle,
-            ),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: Center(
+          child: Text(
+            Constants.baslikText,
+            style: Constants.baslikStyle,
           ),
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            //*Form
-            Row(
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: buildForm(),
-                ),
-                const Expanded(
-                  flex: 1,
-                  child: OrtalamaGoster(dersSayisi: 1, ortalama: 4.5),
-                ),
-              ],
-            ),
-            //*Liste
-            Expanded(
-              child: Container(
-                color: Colors.blue,
-                child: const Text("Liste Buraya Gelecek"),
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          //*Form
+          Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child: buildForm(),
               ),
+              const Expanded(
+                flex: 1,
+                child: OrtalamaGoster(dersSayisi: 1, ortalama: 4.5),
+              ),
+            ],
+          ),
+          //*Liste
+          Expanded(
+            child: Container(
+              color: Colors.blue,
+              child: const Text("Liste Buraya Gelecek"),
             ),
-          ],
-        ));
+          ),
+        ],
+      ),
+    );
   }
 
   Widget buildForm() {
@@ -58,21 +60,35 @@ class _OrtalamaHesaplaPageState extends State<OrtalamaHesaplaPage> {
       key: formKey,
       child: Column(
         children: [
-          _buildTextFormField(),
+          Padding(
+            padding: Constants.yatayPadding8,
+            child: _buildTextFormField(),
+          ),
+          const SizedBox(height: 5),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildHarfler(),
-              IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.account_circle_rounded),
+              Expanded(
+                child: Padding(
+                  padding: Constants.yatayPadding8,
+                  child: _buildHarfler(),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: Constants.yatayPadding8,
+                  child: _buildKrediler(),
+                ),
               ),
               IconButton(
                 onPressed: () {},
-                icon: Icon(Icons.account_circle_rounded),
+                icon: const Icon(Icons.arrow_forward_sharp),
+                color: Constants.anaRenk,
+                iconSize: 30,
               ),
             ],
-          )
+          ),
+          const SizedBox(height: 5),
         ],
       ),
     );
@@ -84,6 +100,7 @@ class _OrtalamaHesaplaPageState extends State<OrtalamaHesaplaPage> {
         hintText: "Matematik",
         border: OutlineInputBorder(
           borderRadius: Constants.borderRadius,
+          borderSide: BorderSide.none,
         ),
         filled: true,
         fillColor: Constants.anaRenk.shade100.withOpacity(0.5),
@@ -91,8 +108,9 @@ class _OrtalamaHesaplaPageState extends State<OrtalamaHesaplaPage> {
     );
   }
 
-  _buildHarfler() {
+  Widget _buildHarfler() {
     return Container(
+      alignment: Alignment.center,
       padding: Constants.dropDownPadding,
       decoration: BoxDecoration(
         color: Constants.anaRenk.shade200.withOpacity(0.3),
@@ -109,6 +127,29 @@ class _OrtalamaHesaplaPageState extends State<OrtalamaHesaplaPage> {
         },
         items: DataHelper.tumDerslerinHarfleri(),
         underline: Container(),
+      ),
+    );
+  }
+
+  Widget _buildKrediler() {
+    return Container(
+      alignment: Alignment.center,
+      padding: Constants.dropDownPadding,
+      decoration: BoxDecoration(
+        color: Constants.anaRenk.shade200.withOpacity(0.3),
+        borderRadius: Constants.borderRadius,
+      ),
+      child: DropdownButton<double>(
+        elevation: 20,
+        iconEnabledColor: Constants.anaRenk.shade300,
+        underline: Container(),
+        value: krediDropDownSecilenDeger,
+        items: DataHelper.tumDerslerinKredileri(),
+        onChanged: (deger) {
+          setState(() {
+            krediDropDownSecilenDeger = deger!;
+          });
+        },
       ),
     );
   }
