@@ -127,7 +127,7 @@ class _OrtalamaHesaplaPageState extends State<OrtalamaHesaplaPage> {
         }
       },
       decoration: InputDecoration(
-        hintText: "Matematik",
+        hintText: "Ders Giriniz",
         border: OutlineInputBorder(
           borderRadius: Constants.borderRadius,
           borderSide: BorderSide.none,
