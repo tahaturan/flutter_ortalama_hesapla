@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ortalama_hesapla/constants/app_constant.dart';
 import 'package:flutter_ortalama_hesapla/helper/data_helper.dart';
 import 'package:flutter_ortalama_hesapla/model/ders.dart';
+import 'package:flutter_ortalama_hesapla/widgets/ders_listesi.dart';
 import 'package:flutter_ortalama_hesapla/widgets/ortalama_goster.dart';
 
 class OrtalamaHesaplaPage extends StatefulWidget {
@@ -19,6 +20,7 @@ class _OrtalamaHesaplaPageState extends State<OrtalamaHesaplaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -49,10 +51,7 @@ class _OrtalamaHesaplaPageState extends State<OrtalamaHesaplaPage> {
           ),
           //*Liste
           Expanded(
-            child: Container(
-              color: Colors.blue,
-              child: const Text("Liste Buraya Gelecek"),
-            ),
+            child: DersListesi(),
           ),
         ],
       ),

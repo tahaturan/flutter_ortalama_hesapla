@@ -32,6 +32,32 @@ class DataHelper {
     }
   }
 
+  static String notuHarfeCevir(not) {
+    switch (not) {
+      case "4.0":
+        return 'AA';
+      case "3.5":
+        return 'BA';
+      case "3.0":
+        return 'BB';
+      case "2.5":
+        return 'CB';
+      case "2.0":
+        return 'CC';
+      case "1.5":
+        return 'DC';
+      case "1.0":
+        return 'DD';
+      case "0.5":
+        return 'FD';
+      case "0.0":
+        return 'FF';
+
+      default:
+        return '';
+    }
+  }
+
   static List<DropdownMenuItem<double>> tumDerslerinHarfleri() {
     return _tumDerslerinHarfleri()
         .map(

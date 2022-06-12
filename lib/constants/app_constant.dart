@@ -5,6 +5,7 @@ class Constants {
   //*sabitler sinifimizi olusturduk ve bu siniftan nesne uretmenden direk degiskenlerimize erismek icinde degiskenlerimizi static olarak tanimliyoruz
   static const MaterialColor anaRenk = Colors.indigo;
   static const String baslikText = "Ortalama Hesapla";
+  static const Icon cardTrailingIcon = Icon(Icons.book_outlined);
   static final TextStyle baslikStyle = GoogleFonts.quicksand(
     fontSize: 24,
     fontWeight: FontWeight.w900,
