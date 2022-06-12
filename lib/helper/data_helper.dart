@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ortalama_hesapla/model/ders.dart';
 
 class DataHelper {
   static List<String> _tumDerslerinHarfleri() {
@@ -60,5 +61,22 @@ class DataHelper {
           ),
         )
         .toList();
+  }
+
+  static List<Ders> tumEklenenDersler = [];
+
+  static dersEkle(Ders ders) {
+    tumEklenenDersler.add(ders);
+  }
+
+  static double ortalamaHesapla() {
+    double toplamNotDegeri = 0;
+    double toplamKrediDegeri = 0;
+
+    for (var ders in tumEklenenDersler) {
+      toplamNotDegeri = toplamNotDegeri + (ders.krediDegeri * ders.harfDegeri);
+      toplamKrediDegeri += ders.krediDegeri;
+    }
+    return toplamNotDegeri / toplamKrediDegeri;
   }
 }
