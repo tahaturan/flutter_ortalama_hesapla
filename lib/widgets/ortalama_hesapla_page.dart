@@ -3,6 +3,8 @@ import 'package:flutter_ortalama_hesapla/constants/app_constant.dart';
 import 'package:flutter_ortalama_hesapla/helper/data_helper.dart';
 import 'package:flutter_ortalama_hesapla/model/ders.dart';
 import 'package:flutter_ortalama_hesapla/widgets/ders_listesi.dart';
+import 'package:flutter_ortalama_hesapla/widgets/harf_dropdown_widget.dart';
+import 'package:flutter_ortalama_hesapla/widgets/kredi_dropdown_widget.dart';
 import 'package:flutter_ortalama_hesapla/widgets/ortalama_goster.dart';
 
 class OrtalamaHesaplaPage extends StatefulWidget {
@@ -51,7 +53,12 @@ class _OrtalamaHesaplaPageState extends State<OrtalamaHesaplaPage> {
           ),
           //*Liste
           Expanded(
-            child: DersListesi(),
+            child: DersListesi(
+              onElemanCikarildiginda: (index) {
+                DataHelper.tumEklenenDersler.removeAt(index);
+                setState(() {});
+              },
+            ),
           ),
         ],
       ),
@@ -74,13 +81,21 @@ class _OrtalamaHesaplaPageState extends State<OrtalamaHesaplaPage> {
               Expanded(
                 child: Padding(
                   padding: Constants.yatayPadding8,
-                  child: _buildHarfler(),
+                  child: HarfDropDownWidget(
+                    onHarfSecildi: (secilenHarf) {
+                      harfDropDownsecilenDeger = secilenHarf;
+                    },
+                  ),
                 ),
               ),
               Expanded(
                 child: Padding(
                   padding: Constants.yatayPadding8,
-                  child: _buildKrediler(),
+                  child: KrediDropDownWidget(
+                    onKrediSecildi: (secilenKredi) {
+                      krediDropDownSecilenDeger = secilenKredi;
+                    },
+                  ),
                 ),
               ),
               IconButton(
@@ -119,52 +134,6 @@ class _OrtalamaHesaplaPageState extends State<OrtalamaHesaplaPage> {
         ),
         filled: true,
         fillColor: Constants.anaRenk.shade100.withOpacity(0.5),
-      ),
-    );
-  }
-
-  Widget _buildHarfler() {
-    return Container(
-      alignment: Alignment.center,
-      padding: Constants.dropDownPadding,
-      decoration: BoxDecoration(
-        color: Constants.anaRenk.shade200.withOpacity(0.3),
-        borderRadius: Constants.borderRadius,
-      ),
-      child: DropdownButton<double>(
-        elevation: 20,
-        iconEnabledColor: Constants.anaRenk.shade300,
-        value: harfDropDownsecilenDeger,
-        onChanged: (deger) {
-          setState(() {
-            harfDropDownsecilenDeger = deger!;
-          });
-        },
-        items: DataHelper.tumDerslerinHarfleri(),
-        underline: Container(),
-      ),
-    );
-  }
-
-  Widget _buildKrediler() {
-    return Container(
-      alignment: Alignment.center,
-      padding: Constants.dropDownPadding,
-      decoration: BoxDecoration(
-        color: Constants.anaRenk.shade200.withOpacity(0.3),
-        borderRadius: Constants.borderRadius,
-      ),
-      child: DropdownButton<double>(
-        elevation: 20,
-        iconEnabledColor: Constants.anaRenk.shade300,
-        underline: Container(),
-        value: krediDropDownSecilenDeger,
-        items: DataHelper.tumDerslerinKredileri(),
-        onChanged: (deger) {
-          setState(() {
-            krediDropDownSecilenDeger = deger!;
-          });
-        },
       ),
     );
   }

@@ -5,7 +5,9 @@ import 'package:flutter_ortalama_hesapla/model/ders.dart';
 import 'package:flutter_ortalama_hesapla/widgets/bos_liste_gorunumu.dart';
 
 class DersListesi extends StatefulWidget {
-  DersListesi({Key? key}) : super(key: key);
+  final Function onElemanCikarildiginda;
+  DersListesi({required this.onElemanCikarildiginda, Key? key})
+      : super(key: key);
 
   @override
   State<DersListesi> createState() => _DersListesiState();
@@ -24,8 +26,7 @@ class _DersListesiState extends State<DersListesi> {
                 key: UniqueKey(),
                 direction: DismissDirection.startToEnd,
                 onDismissed: (yon) {
-                  eklenenDerslerListesi.removeAt(index);
-                  setState(() {});
+                  widget.onElemanCikarildiginda(index);
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(2.0),
